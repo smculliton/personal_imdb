@@ -1,7 +1,8 @@
 <h1> Director Index </h1>
 
 <% @directors.each do |director| %>
-<p><a href="/directors/<%= director.id %>"><%= director.name %></a> - created: <%= director.created_at %><p>
+<p><a href="/directors/<%= director.id %>"><%= director.name %></a> - created: <%= director.created_at %><p><br/>
+<%= link_to 'Edit', "/directors/#{director.id}/edit" %><br/>
 <% end %>
 
 <%= link_to 'New Director', '/directors/new' %>
