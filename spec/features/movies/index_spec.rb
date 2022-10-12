@@ -8,24 +8,23 @@ RSpec.describe 'the movie index' do
   end
 
   # User Story 3, Child Index 
-  it 'displays the movie titles' do 
+  it 'only displays the movie titles of oscar winners' do 
     visit "/movies/"
 
-    expect(page).to have_content(@shining.name)
+    expect(page).to_not have_content(@shining.name)
     expect(page).to have_content(@space.name)
   end 
 
-  it 'displays the movie attributes' do 
+  it 'doesnt display non oscar winners' do 
     visit "/movies"
 
-    expect(page).to have_content(@shining.release_year)
-    expect(page).to have_content(@shining.mpaa_rating)
-    expect(page).to have_content("#{@shining.run_time} mins")
-    expect(page).to have_content("Rotten Tomatoes Score: #{@shining.rotten_tomatoes_score}%")
-    expect(page).to have_content("Oscar Winner?: #{@shining.oscar_winner}")
+    expect(page).to_not have_content(@shining.release_year)
+    expect(page).to_not have_content("#{@shining.run_time} mins")
+    expect(page).to_not have_content("Rotten Tomatoes Score: #{@shining.rotten_tomatoes_score}%")
+    expect(page).to_not have_content("Oscar Winner?: #{@shining.oscar_winner}")
   end
 
-  it 'displays all movie attributes' do 
+  it 'displays all oscar winning movies attributes' do 
     visit "/movies/"
 
     expect(page).to have_content(@space.release_year)

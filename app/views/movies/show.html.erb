@@ -2,3 +2,4 @@
 <p><%= "#{@movie.release_year} - #{@movie.mpaa_rating} - #{@movie.run_time} mins" %></p>
 <p><%= "Rotten Tomatoes Score: #{@movie.rotten_tomatoes_score}%"%> </p>
 <p><%= "Oscar Winner?: #{@movie.oscar_winner}"%> </p><br/>
+<%= button_to 'Update Movie', "/movies/#{@movie.id}/edit", method: :get %>
