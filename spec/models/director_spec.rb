@@ -8,4 +8,10 @@ RSpec.describe Director do
   end
 
   it { should have_many :movies }
+
+  describe '#movie_count' do 
+    it 'returns amount of movies associated with director' do
+      expect(@kubrick.movie_count).to eq(2)
+    end
+  end
 end
