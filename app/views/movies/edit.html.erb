@@ -1,0 +1,15 @@
+<%= form_with url: "/movies/#{@movie.id}/update", method: :patch, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name, value: @movie.name %>
+  <%= form.label :release_year, "Release Year" %>
+  <%= form.text_field :release_year, value: @movie.release_year %>
+  <%= form.label :mpaa_rating, "MPAA Rating" %>
+  <%= form.text_field :mpaa_rating, value: @movie.mpaa_rating %>
+  <%= form.label :run_time, "Run Time" %>
+  <%= form.text_field :run_time, value: @movie.run_time %>
+  <%= form.label :rotten_tomatoes_score, "Rotten Tomatoes Score" %>
+  <%= form.text_field :rotten_tomatoes_score, value: @movie.rotten_tomatoes_score %>
+  <%= form.label :oscar_winner, "Oscar Winner" %>
+  <%= form.text_field :oscar_winner, value: @movie.oscar_winner %>
+  <%= form.submit "Update Movie" %>
+<% end %>
