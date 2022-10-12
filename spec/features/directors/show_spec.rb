@@ -40,4 +40,12 @@ RSpec.describe 'the directors show page' do
 
     expect(page).to have_content("Movie Count: 3")
   end
+
+  # User Story 10, Parent Child Index Link
+  it 'contains a link to the directors movies page' do
+    visit "/directors/#{@kubrick.id}"
+    click_button 'Movies'
+    
+    expect(current_path).to eq("/directors/#{@kubrick.id}/movies")
+  end
 end
