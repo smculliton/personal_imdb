@@ -1,8 +1,9 @@
 <h1><%= @director.name %></h1>
-<% @director.movies.each do |movie| %>
+<% @movies.each do |movie| %>
 <h3><%= movie.name %></h3>
 <p><%= "#{movie.release_year} - #{movie.mpaa_rating} - #{movie.run_time} mins" %></p>
 <p><%= "Rotten Tomatoes Score: #{movie.rotten_tomatoes_score}%"%> </p>
-<p><%= "Oscar Winner?: #{movie.oscar_winner}"%> </p><br/>
+<p><%= "Oscar Winner?: #{movie.oscar_winner}"%> </p>
+<p><%= button_to "Edit", "/movies/#{movie.id}/edit", method: :get %></p><br/>
 <% end %>
 <%= link_to "Create Movie", "/directors/#{@director.id}/movies/new" %>

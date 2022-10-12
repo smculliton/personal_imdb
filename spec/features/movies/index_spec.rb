@@ -33,4 +33,12 @@ RSpec.describe 'the movie index' do
     expect(page).to have_content("Rotten Tomatoes Score: #{@space.rotten_tomatoes_score}%")
     expect(page).to have_content("Oscar Winner?: #{@space.oscar_winner}")
   end
+
+  it 'links to the movies edit page' do 
+    visit '/movies/'
+
+    page.first(:button, 'Edit').click
+
+    expect(current_path).to eq("/movies/#{@space.id}/edit")
+  end
 end

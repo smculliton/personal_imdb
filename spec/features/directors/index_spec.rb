@@ -27,4 +27,14 @@ RSpec.describe 'the Director index' do
 
     expect(page).to have_content("#{@craven.name} - created: #{@craven.created_at}")
   end 
+
+  it 'links to directors edit page' do 
+    # could figure out a way to make this testing more robust
+    # wanted to use a within capybara command but could not figure it out
+    visit "/directors/"
+  
+    page.first(:button, 'Edit').click
+
+    expect(current_path).to eq("/directors/#{@craven.id}/edit")
+  end
 end

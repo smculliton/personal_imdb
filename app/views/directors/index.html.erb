@@ -2,6 +2,7 @@
 
 <% @directors.each do |director| %>
 <p><a href="/directors/<%= director.id %>"><%= director.name %></a> - created: <%= director.created_at %><p>
+<%= button_to 'Edit', "/directors/#{director.id}/edit", method: :get %><br/>
 <% end %>
-
-<%= link_to 'New Director', '/directors/new' %>
+<br/>
+<h4><%= link_to 'New Director', '/directors/new' %></h4>
