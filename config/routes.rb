@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   patch '/movies/:id/update', to: 'movies#update'
   delete '/directors/:id', to: 'directors#destroy'
   delete '/movies/:id', to: 'movies#destroy'
+  post '/directors/:id/movies', to: 'directors_movies#index'
 end
