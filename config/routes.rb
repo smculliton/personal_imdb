@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   get '/directors/:id/movies/', to: 'directors_movies#index'
   post '/directors/', to: 'directors#create'
   get '/directors/:id/edit', to: 'directors#edit'
-  patch 'directors/:id', to: 'directors#update'
+  patch '/directors/:id', to: 'directors#update'
+  get '/directors/:id/movies/new', to: 'directors_movies#new'
 end
