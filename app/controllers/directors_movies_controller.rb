@@ -1,7 +1,7 @@
 class DirectorsMoviesController < ApplicationController
   def index 
     @director = Director.find(params[:id])
-    @movies = @director.movies.order(:name)
+    @movies = @director.movies.order(:name).where("rotten_tomatoes_score >= #{Movie.rotten_tomatoes(params[:rotten_tomatoes])}")
   end
 
   def new
