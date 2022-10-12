@@ -33,7 +33,7 @@ RSpec.describe 'the Director index' do
     # wanted to use a within capybara command but could not figure it out
     visit "/directors/"
   
-    page.first(:link, 'Edit').click
+    page.first(:button, 'Edit').click
 
     expect(current_path).to eq("/directors/#{@craven.id}/edit")
   end
