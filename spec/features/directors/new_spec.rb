@@ -27,7 +27,8 @@ RSpec.describe 'the Director create page' do
     fill_in('Name', with: 'Ari Aster')
     fill_in('Birth Year', with: '1986')
     fill_in('Birth Place', with: 'New York City, New York')
-    check('Still Active')
+    fill_in('Still Active', with: 'true')
+    # check('Still Active')
 
     click_button('Create Director')
 
