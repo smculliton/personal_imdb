@@ -3,3 +3,5 @@
 <% @directors.each do |director| %>
 <p><%= director.name %> - created: <%= director.created_at %><p>
 <% end %>
+
+<%= link_to 'New Director', '/directors/new' %>
