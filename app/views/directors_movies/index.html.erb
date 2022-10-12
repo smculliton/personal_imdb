@@ -5,3 +5,4 @@
 <p><%= "Rotten Tomatoes Score: #{movie.rotten_tomatoes_score}%"%> </p>
 <p><%= "Oscar Winner?: #{movie.oscar_winner}"%> </p><br/>
 <% end %>
+<%= link_to "Create Movie", "/directors/#{@director.id}/movies/new" %>

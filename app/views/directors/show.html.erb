@@ -3,6 +3,7 @@
 <p>Still Active?: <%= @director.still_active %></p>
 <p>Movie Count: <%= @director.movie_count %></p>
 <%= button_to 'Movies', "/directors/#{@director.id}/movies", method: :get %>
+<%= link_to 'Update Director', "/directors/#{@director.id}/edit" %>
 
 
 
