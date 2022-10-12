@@ -21,6 +21,12 @@ RSpec.describe 'the directors movies index' do
     expect(page).to have_content(@space.name)
   end
 
+  it 'sorts movies alphabetically by title' do 
+    visit "/directors/#{@kubrick.id}/movies"
+    
+    expect(page.body).to match(/#{@space.name}.*#{@shining.name}/m)
+  end
+
   it 'shows the movies attribiutes' do 
     visit "/directors/#{@kubrick.id}/movies"
 

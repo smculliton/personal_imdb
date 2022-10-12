@@ -1,6 +1,7 @@
 class DirectorsMoviesController < ApplicationController
   def index 
     @director = Director.find(params[:id])
+    @movies = @director.movies.order(:name)
   end
 
   def new
