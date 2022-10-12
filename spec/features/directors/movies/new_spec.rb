@@ -26,6 +26,20 @@ RSpec.describe 'the Director-Movie creation page' do
     expect(current_path).to eq("/directors/#{@kubrick.id}/movies/new")
   end
 
-  it 'can create a new movie related to a director'
+  it 'can create a new movie related to a director' do 
+    visit "/directors/#{@kubrick.id}/movies/new"
 
+    fill_in('Name', with: 'The Shining')
+    fill_in('Release Year', with: '1980')
+    fill_in('MPAA Rating', with: 'R')
+    fill_in('Run Time', with: '146')
+    fill_in('Rotten Tomatoes Score', with: '82')
+    fill_in('Oscar Winner?', with: 'false')
+
+    click_button 'Create Movie'
+
+    expect(current_path).to eq("/directors/#{@kubrick.id}/movies")
+    expect(page).to have_content('The Shining')
+    expect(page).to have_content('Rotten Tomatoes Score: 82%')
+  end
 end
