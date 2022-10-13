@@ -49,7 +49,7 @@ RSpec.describe 'the directors movies index' do
     visit "/directors/#{@kubrick.id}/movies"
 
     fill_in(:rotten_tomatoes, with: '90')
-    click_button "Only Return Records with More Than X% Rotten Tomatoes Score"
+    click_button "Only Return Records with More Than % Rotten Tomatoes Score"
 
     expect(current_path).to eq("/directors/#{@kubrick.id}/movies")
     expect(page).to_not have_content('The Shining')
