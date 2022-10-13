@@ -10,7 +10,7 @@ RSpec.describe 'the Director edit page' do
   it 'links from the directors show page' do 
     visit "/directors/#{@kubrick.id}"
     
-    click_link "Update Director"
+    click_button "Update Director"
 
     expect(current_path).to eq("/directors/#{@kubrick.id}/edit")
   end

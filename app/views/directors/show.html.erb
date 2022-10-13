@@ -2,9 +2,10 @@
 <p>Born: <%= "#{@director.birth_year}, #{@director.birth_place}"%></p>
 <p>Still Active?: <%= @director.still_active %></p>
 <p>Movie Count: <%= @director.movie_count %></p>
-<%= button_to 'Movies', "/directors/#{@director.id}/movies", method: :get %>
-<%= button_to 'Delete', "/directors/#{@director.id}", method: :delete %>
-<%= link_to 'Update Director', "/directors/#{@director.id}/edit" %>
+<p><%= button_to 'Movies', "/directors/#{@director.id}/movies", method: :get %></p>
+<p><%= button_to 'Update Director', "/directors/#{@director.id}/edit", method: :get %></p>
+<p><%= button_to 'Delete', "/directors/#{@director.id}", method: :delete %></p>
+
 
 
 
