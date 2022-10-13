@@ -17,7 +17,7 @@ RSpec.describe 'the Director edit page' do
 
   it 'can edit the directors page' do
     visit "/directors/#{@kubrick.id}/edit"
-    save_and_open_page
+    
     fill_in('Name', with: 'Stanley Kubrick')
     uncheck('Still Active?')
     
