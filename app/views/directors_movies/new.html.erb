@@ -10,6 +10,7 @@
   <%= form.label :rotten_tomatoes_score, "Rotten Tomatoes Score" %>
   <%= form.text_field :rotten_tomatoes_score %>
   <%= form.label :oscar_winner, "Oscar Winner?" %>
-  <%= form.text_field :oscar_winner %>
+  <%= form.hidden_field :oscar_winner, value: false %>
+  <%= form.check_box :oscar_winner, {}, true %>
   <%= form.submit "Create Movie" %>
 <% end %>

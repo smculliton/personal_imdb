@@ -6,6 +6,7 @@
   <%= form.label :birth_place, "Birth Place" %>
   <%= form.text_field :birth_place %>
   <%= form.label :still_active, "Still Active?" %>
-  <%= form.text_field :still_active %>
+  <%= form.hidden_field :still_active, value: false %>
+  <%= form.check_box :still_active, {}, true, false %>
   <%= form.submit 'Create Director' %>
 <% end %>

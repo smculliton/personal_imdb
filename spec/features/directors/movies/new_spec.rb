@@ -34,12 +34,31 @@ RSpec.describe 'the Director-Movie creation page' do
     fill_in('MPAA Rating', with: 'R')
     fill_in('Run Time', with: '146')
     fill_in('Rotten Tomatoes Score', with: '82')
-    fill_in('Oscar Winner?', with: 'false')
 
     click_button 'Create Movie'
+    shining = Movie.last
 
     expect(current_path).to eq("/directors/#{@kubrick.id}/movies")
     expect(page).to have_content('The Shining')
     expect(page).to have_content('Rotten Tomatoes Score: 82%')
+    expect(shining.mpaa_rating).to eq('R')
+    expect(shining.release_year).to eq(1980)
+    expect(shining.oscar_winner).to eq(false)
+  end
+
+  it 'can be an oscar winner' do 
+    visit "/directors/#{@kubrick.id}/movies/new"
+
+    fill_in('Name', with: 'The Shining')
+    fill_in('Release Year', with: '1980')
+    fill_in('MPAA Rating', with: 'R')
+    fill_in('Run Time', with: '146')
+    fill_in('Rotten Tomatoes Score', with: '82')
+    check('Oscar Winner?')
+
+    click_button 'Create Movie'
+    shining = Movie.last
+
+    expect(shining.oscar_winner).to eq(true)
   end
 end
