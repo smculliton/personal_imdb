@@ -41,4 +41,13 @@ RSpec.describe 'the movie index' do
 
     expect(current_path).to eq("/movies/#{@space.id}/edit")
   end
+
+  it 'links to the delete action of that movie' do 
+    visit '/movies'
+    save_and_open_page
+    page.first(:button, 'Delete').click
+    save_and_open_page
+    expect(current_path).to eq("/movies")
+    expect(page).to_not have_content('2001: A Space Odyssey')
+  end
 end

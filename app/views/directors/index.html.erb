@@ -3,6 +3,7 @@
 <% @directors.each do |director| %>
 <p><a href="/directors/<%= director.id %>"><%= director.name %></a> - created: <%= director.created_at %><p>
 <%= button_to 'Edit', "/directors/#{director.id}/edit", method: :get %><br/>
+<%= button_to 'Delete', "/directors/#{director.id}", method: :delete %><br/>
 <% end %>
 <br/>
 <h4><%= link_to 'New Director', '/directors/new' %></h4>
