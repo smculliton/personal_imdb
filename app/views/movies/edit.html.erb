@@ -9,7 +9,8 @@
   <%= form.text_field :run_time, value: @movie.run_time %>
   <%= form.label :rotten_tomatoes_score, "Rotten Tomatoes Score" %>
   <%= form.text_field :rotten_tomatoes_score, value: @movie.rotten_tomatoes_score %>
-  <%= form.label :oscar_winner, "Oscar Winner" %>
-  <%= form.text_field :oscar_winner, value: @movie.oscar_winner %>
+  <%= form.label :oscar_winner, "Oscar Winner?" %>
+  <%= form.hidden_field :oscar_winner, value: false %>
+  <%= form.check_box :oscar_winner, { checked: @movie.oscar_winner }, true %>
   <%= form.submit "Update Movie" %>
 <% end %>
