@@ -31,10 +31,19 @@ RSpec.describe 'the Director index' do
   it 'links to directors edit page' do 
     # could figure out a way to make this testing more robust
     # wanted to use a within capybara command but could not figure it out
-    visit "/directors/"
+    visit '/directors/'
   
     page.first(:button, 'Edit').click
 
     expect(current_path).to eq("/directors/#{@craven.id}/edit")
+  end
+
+  it 'links to directors delete page' do 
+    visit '/directors'
+
+    page.first(:button, 'Delete').click
+
+    expect(current_path).to eq("/directors")
+    expect(page).to_not have_content('Wes Craven')
   end
 end
