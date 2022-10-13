@@ -1,13 +1,13 @@
-<h1><%= @director.name %></h1>
+<h1><%= link_to @director.name, "/directors/#{@director.id}" %></h1>
 <% @movies.each do |movie| %>
 <h3><%= link_to movie.name, "/movies/#{movie.id}" %></h3>
 <p><%= "#{movie.release_year} - #{movie.mpaa_rating} - #{movie.run_time} mins" %></p>
 <p><%= "Rotten Tomatoes Score: #{movie.rotten_tomatoes_score}%"%> </p>
 <p><%= "Oscar Winner?: #{movie.oscar_winner}"%> </p>
 <p><%= button_to "Edit", "/movies/#{movie.id}/edit", method: :get %></p>
-<p><%= button_to "Delete", "/movies/#{movie.id}", method: :delete %></p><br/>
+<p><%= button_to "Delete", "/movies/#{movie.id}", method: :delete %></p><br>
 <% end %>
-<%= link_to "Create Movie", "/directors/#{@director.id}/movies/new" %><br/><br/>
+<h4><%= link_to "Create Movie", "/directors/#{@director.id}/movies/new" %><h4><br/><br/>
 
 <%= form_with url: "/directors/#{@director.id}/movies", local: true do |form| %>
   <%= form.number_field :rotten_tomatoes, in: 0..100, step: 1 %>

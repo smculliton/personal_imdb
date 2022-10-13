@@ -1,7 +1,7 @@
 class DirectorsMoviesController < ApplicationController
   def index 
     @director = Director.find(params[:id])
-    @movies = @director.filtered_movies(params[:rotten_tomatoes])
+    @movies = @director.filtered_movies(@director.movies_by_name, params[:rotten_tomatoes])
   end
 
   def new
