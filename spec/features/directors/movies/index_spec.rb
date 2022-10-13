@@ -45,6 +45,19 @@ RSpec.describe 'the directors movies index' do
     expect(current_path).to eq("/movies/#{@space.id}/edit")
   end
 
+  it 'has a delete button next to every movie' do 
+    visit "/movies"
+
+    expect(page).to have_content("2001: A Space Odyssey")
+
+    visit "/directors/#{@kubrick.id}/movies"
+
+    page.first(:button, 'Delete').click 
+
+    expect(current_path).to eq("/movies")
+    expect(page).to_not have_content("2001: A Space Odyssey")
+  end
+
   it 'has a form to only show records above a certain rotten tomatoes score' do 
     visit "/directors/#{@kubrick.id}/movies"
 
