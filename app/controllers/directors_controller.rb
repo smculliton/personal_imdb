@@ -34,6 +34,11 @@ class DirectorsController < ApplicationController
     redirect_to "/directors"
   end
 
+  def sort
+    @directors = Director.all
+    @directors = @directors.sort_by { |director| -director.movie_count }
+  end
+
 
   private
   def director_params

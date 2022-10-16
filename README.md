@@ -1,7 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<img src="database_schema.png" alt="Database schema" style="height:300px; width:250px;"/>
+
 
 Things you may want to cover:
 
@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+
