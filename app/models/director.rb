@@ -1,8 +1,20 @@
 class Director < ApplicationRecord
   has_many :movies
 
+  def self.order_by_created_at
+    order(:created_at)
+  end
+
+  def self.exact_search(keyword)
+    where(name: keyword)
+  end
+
+  def self.partial_search(keyword)
+    where("name LIKE ?", "%#{keyword}%")
+  end
+
   def movie_count
-    movies.length
+    movies.count
   end
 
   def movies_by_name

@@ -3,25 +3,11 @@
 <img src="database_schema.png" alt="Database schema" style="height:300px; width:250px;"/>
 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+TO DO:
+- update sort alphabetically to have a button instead of a automatically sorting alphabetically
+- use query params for search methods
+- update to query params for all sort methods as well
+- refactor to move all methods to models
 
 
 

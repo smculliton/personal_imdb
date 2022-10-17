@@ -10,7 +10,7 @@ RSpec.describe 'the directors movies index' do
   # User Story 5, Parent Children Index 
   it 'displays the directors name' do 
     visit "/directors/#{@kubrick.id}/movies"
-
+    save_and_open_page
     expect(page).to have_content(@kubrick.name)
   end
 

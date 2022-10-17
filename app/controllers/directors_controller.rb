@@ -1,6 +1,12 @@
 class DirectorsController < ApplicationController
   def index
-    @directors = Director.all.order(:created_at)
+    if !params[:search].nil? && params[:search] != ''
+      @directors = Director.order_by_created_at.exact_search(params[:search])
+    elsif !params[:partial_search].nil? && params[:partial_search] != ''
+      @directors = Director.order_by_created_at.partial_search(params[:partial_search])
+    else
+      @directors = Director.order_by_created_at
+    end
   end
 
   def show
