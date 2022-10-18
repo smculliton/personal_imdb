@@ -1,11 +1,9 @@
 class DirectorsController < ApplicationController
   def index
-    if !params[:search].nil? && params[:search] != ''
-      @directors = Director.order_by_created_at.exact_search(params[:search])
-    elsif !params[:partial_search].nil? && params[:partial_search] != ''
-      @directors = Director.order_by_created_at.partial_search(params[:partial_search])
-    else
+    if params[:search] == nil
       @directors = Director.order_by_created_at
+    else
+      params[:exact_match] == '1' ? @directors = Director.order_by_created_at.exact_search(params[:search]) : @directors = Director.order_by_created_at.partial_search(params[:search])
     end
   end
 
@@ -46,7 +44,7 @@ class DirectorsController < ApplicationController
   end
 
 
-  private
+private
   def director_params
     params.permit(:name, :birth_place, :birth_year, :still_active)
   end

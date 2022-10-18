@@ -8,7 +8,7 @@ RSpec.describe 'the Director index' do
   end
 
   # User Story 1, Parent Index
-  xit 'has the name of every director' do
+  it 'has the name of every director' do
     visit "/directors/"
 
     expect(page).to have_content(@kubrick.name)
@@ -16,19 +16,19 @@ RSpec.describe 'the Director index' do
   end
 
   # User Story 6, Parent Index sorted by Most Recently Created
-  xit 'is sorted by most recently created' do 
+  it 'is sorted by most recently created' do 
     visit "/directors/"
 
     expect(page.body).to match(/#{@craven.name}.*#{@kubrick.name}.*#{@hitchcock.name}/m)
   end
 
-  xit 'displays when each director was created' do
+  it 'displays when each director was created' do
     visit "/directors/"
 
     expect(page).to have_content("#{@craven.name} - created: #{@craven.created_at}")
   end 
 
-  xit 'links to directors edit page' do 
+  it 'links to directors edit page' do 
     # could figure out a way to make this testing more robust
     # wanted to use a within capybara command but could not figure it out
     visit '/directors/'
@@ -38,7 +38,7 @@ RSpec.describe 'the Director index' do
     expect(current_path).to eq("/directors/#{@craven.id}/edit")
   end
 
-  xit 'links to directors delete page' do 
+  it 'links to directors delete page' do 
     visit '/directors'
 
     page.first(:button, 'Delete').click
@@ -48,18 +48,12 @@ RSpec.describe 'the Director index' do
   end
 
 # Extension 2: Search by name (exact match)
-
-# As a visitor
-# When I visit an index page ('/parents') or ('/child_table_name')
-# Then I see a text box to filter results by keyword
-# When I type in a keyword that is an exact match of one or more of my records and press the Search button
-# Then I only see records that are an exact match returned on the page
-
-  xit 'exact searches for a director using a keyword' do 
+  it 'exact searches for a director using a keyword' do 
     visit '/directors'
 
     fill_in('Search', with: 'Alfred Hitchcock')
 
+    check('Exact Matches Only')
     click_button 'Search Directors'
     
     expect(current_path).to eq('/directors')
@@ -69,13 +63,15 @@ RSpec.describe 'the Director index' do
     expect(page).to_not have_content('Stanley Kubrick')
   end
 
+# Extension 3: Search by name (partial match)
   it 'partial searches for a director using a keyword' do 
     @hitchcock2 = Director.create!(name: 'Dennis Hitchcock', birth_year: 1899, birth_place: 'Essex, England', still_active: false)
 
     visit '/directors'
 
-    fill_in(:partial_search, with: 'Hitchcock')
+    fill_in('Search', with: 'Hitchcock')
 
+    uncheck('Exact Matches Only')
     click_button 'Search Directors'
     
     expect(current_path).to eq('/directors')
