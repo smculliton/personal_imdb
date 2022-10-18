@@ -10,8 +10,8 @@
 <% end %>
 
 <% @directors.each do |director| %>
-<p><a href="/directors/<%= director.id %>"><%= director.name %></a> - created: <%= director.created_at %><p>
-<p><%= "Movie Count: #{director.movie_count}" if params[:sort] == 'moviecount' %>
+<p><a href="/directors/<%= director.id %>"><%= director.name %></a> - created: <%= director.created_at %></p>
+<p><%= "Movie Count: #{director.movie_count}" if params[:sort] == 'moviecount' %></p>
 <%= button_to 'Edit', "/directors/#{director.id}/edit", method: :get %><br/>
 <%= button_to 'Delete', "/directors/#{director.id}", method: :delete %><br/>
 
