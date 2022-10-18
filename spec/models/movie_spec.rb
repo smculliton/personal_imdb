@@ -9,10 +9,9 @@ RSpec.describe Movie do
     @space = @kubrick.movies.create!(name: '2001: A Space Odyssey', release_year: 1968, mpaa_rating: 'G', run_time: 159, rotten_tomatoes_score: 92, oscar_winner: true)
   end
 
-  describe '#oscar_winner?' do 
-    it 'returns boolean of whether movie has won an oscar' do 
-      expect(@shining.oscar_winner?).to be(false)
-      expect(@space.oscar_winner?).to be(true)
+  describe '#oscar_winners' do 
+    it 'returns a list of oscar winners' do 
+      expect(Movie.oscar_winners).to eq([@space])
     end
   end
 end
