@@ -13,6 +13,11 @@ class Director < ApplicationRecord
     where("name LIKE ?", "%#{keyword}%")
   end
 
+  def self.order_by_movie_count
+    Director.left_joins(:movies).group(:id).order(Arel.sql('COUNT(movies.id) DESC'))
+    #SELECT directors.name, COUNT(*) AS mycount FROM directors INNER JOIN movies ON movies.director_id = directors.id GROUP BY directors.id ORDER BY mycount;
+  end
+
   def movie_count
     movies.count
   end

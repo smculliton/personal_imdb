@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   # Director Routes
   get '/directors/', to: 'directors#index'
-  get '/directors/sort/', to: 'directors#sort'
   get '/directors/new', to: 'directors#new'
   get '/directors/:id/', to: 'directors#show'
   post '/directors/', to: 'directors#create'
