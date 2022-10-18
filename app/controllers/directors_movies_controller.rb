@@ -1,7 +1,11 @@
 class DirectorsMoviesController < ApplicationController
   def index 
     @director = Director.find(params[:id])
-    @movies = @director.filtered_movies(@director.movies_by_name, params[:rotten_tomatoes])
+    if params[:sort] == 'alpha'
+      @movies = @director.filtered_movies(@director.movies_by_name, params[:rotten_tomatoes])
+    else
+      @movies = @director.filtered_movies(@director.movies, params[:rotten_tomatoes])
+    end
   end
 
   def new

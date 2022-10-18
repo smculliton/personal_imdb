@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'the directors movies index' do 
   before(:each) do 
     @kubrick = Director.create!(name: 'Stanley Kubrick', birth_year: 1928, birth_place: 'Carthage, New York', still_active: false)
-    @shining = @kubrick.movies.create!(name: 'The Shining', release_year: 1980, mpaa_rating: 'R', run_time: 146, rotten_tomatoes_score: 82, oscar_winner: false)
+    @shining = @kubrick.movies.create!(name: 'The Shining', release_year: 1980, mpaa_rating: 'R', run_time: 146, rotten_tomatoes_score: 82, oscar_winner: true)
     @space = @kubrick.movies.create!(name: '2001: A Space Odyssey', release_year: 1968, mpaa_rating: 'G', run_time: 159, rotten_tomatoes_score: 92, oscar_winner: true)
   end
 
@@ -23,7 +23,12 @@ RSpec.describe 'the directors movies index' do
 
   it 'sorts movies alphabetically by title' do 
     visit "/directors/#{@kubrick.id}/movies"
+
+    expect(page.body).to match(/#{@shining.name}.*#{@space.name}/m)
     
+    click_link('Sort Movies Alphabetically')
+
+    expect(current_path).to eq("/directors/#{@kubrick.id}/movies")
     expect(page.body).to match(/#{@space.name}.*#{@shining.name}/m)
   end
 
@@ -42,20 +47,20 @@ RSpec.describe 'the directors movies index' do
 
     page.first(:button, 'Edit').click 
 
-    expect(current_path).to eq("/movies/#{@space.id}/edit")
+    expect(current_path).to eq("/movies/#{@shining.id}/edit")
   end
 
   it 'has a delete button next to every movie' do 
     visit "/movies"
-
-    expect(page).to have_content("2001: A Space Odyssey")
+    
+    expect(page).to have_content("The Shining")
 
     visit "/directors/#{@kubrick.id}/movies"
 
     page.first(:button, 'Delete').click 
 
     expect(current_path).to eq("/movies")
-    expect(page).to_not have_content("2001: A Space Odyssey")
+    expect(page).to_not have_content("The Shining")
   end
 
   it 'has a form to only show records above a certain rotten tomatoes score' do 

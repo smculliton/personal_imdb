@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.where(oscar_winner: true)
+    @movies = Movie.oscar_winners
   end
 
   def show 

@@ -1,6 +1,14 @@
 class DirectorsController < ApplicationController
   def index
-    @directors = Director.all.order(:created_at)
+    if params[:sort] == 'moviecount'
+      @directors = Director.order_by_movie_count
+    else
+      @directors = Director.order_by_created_at
+    end
+
+    if params[:search] != nil
+      params[:exact_match] == '1' ? @directors = Director.order_by_created_at.exact_search(params[:search]) : @directors = Director.order_by_created_at.partial_search(params[:search])
+    end
   end
 
   def show
@@ -34,8 +42,7 @@ class DirectorsController < ApplicationController
     redirect_to "/directors"
   end
 
-
-  private
+private
   def director_params
     params.permit(:name, :birth_place, :birth_year, :still_active)
   end
